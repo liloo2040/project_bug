@@ -1,0 +1,26 @@
+FootBundle\Entity\FootballPlayer:
+    type: entity
+    table: null
+    repositoryClass: FootBundle\Repository\FootballPlayerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        size:
+            type: string
+            length: 255
+        age:
+            type: integer
+    manyToOne:
+        post:
+            targetEntity: FootBundle\Entity\Post
+            joinColumn:
+                name: post_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

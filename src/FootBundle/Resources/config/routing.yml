@@ -1,0 +1,15 @@
+foot_post:
+    resource: "@FootBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+foot_footballplayer:
+    resource: "@FootBundle/Resources/config/routing/footballplayer.yml"
+    prefix:   /footballplayer
+
+foot_team:
+    resource: "@FootBundle/Resources/config/routing/team.yml"
+    prefix:   /team
+
+foot_homepage:
+    path:     /
+    defaults: { _controller: FootBundle:Default:index }

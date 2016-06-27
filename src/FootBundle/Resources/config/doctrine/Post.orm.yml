@@ -1,0 +1,15 @@
+FootBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: FootBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        position:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

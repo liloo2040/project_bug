@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>FootballPlayer list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for footballPlayer in footballPlayers %}
+            <tr>
+                <td><a href="{{ path('footballplayer_show', { 'id': footballPlayer.id }) }}">{{ footballPlayer.id }}</a></td>
+                <td>{{ footballPlayer.name }}</td>
+                <td>{{ footballPlayer.size }}</td>
+                <td>{{ footballPlayer.age }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('footballplayer_show', { 'id': footballPlayer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('footballplayer_edit', { 'id': footballPlayer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('footballplayer_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
