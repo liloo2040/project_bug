@@ -3,3 +3,5 @@ FootBundle\Entity\FootballPlayer:
     properties:
         file:
             - Image: ~
+        plop:
+            - Humm nothing ??

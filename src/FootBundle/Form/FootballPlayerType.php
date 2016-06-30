@@ -17,11 +17,10 @@ class FootballPlayerType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('size')
             ->add('age')
             ->add('file', 'file', array('required' => false))
             ->add('post')
-            ->add('prenom', 'text', array('required' => false))
+            ->add('prenom', 'text', array('required' => true))
         ;
     }
     

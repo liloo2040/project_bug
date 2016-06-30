@@ -15,23 +15,6 @@ use FootBundle\Form\FootballPlayerType;
 class FootballPlayerController extends Controller
 {
     /**
-     * Lists all FootballPlayer entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $footballPlayers = $em->getRepository('FootBundle:FootballPlayer')->findAll();
-        $post = $em->getRepository('FootBundle:Post')->findAll();
-
-        return $this->render('FootBundle:footballplayer:index.html.twig', array(
-            'footballPlayers' => $footballPlayers,
-            'post' => $post,
-        ));
-    }
-
-    /**
      * Creates a new FootballPlayer entity.
      *
      */
@@ -49,7 +32,7 @@ class FootballPlayerController extends Controller
             return $this->redirectToRoute('footballplayer_index');
         }
 
-        return $this->render('FootBundle:footballplayer:new.html.twig', array(
+        return $this->render('default/new.html.twig', array(
             'footballPlayer' => $footballPlayer,
             'form' => $form->createView(),
         ));

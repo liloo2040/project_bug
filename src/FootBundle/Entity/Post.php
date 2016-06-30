@@ -9,11 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Post
 {
-
-    public function __toString() {
-        return $this->position;
-    }
-
     public $file;
 
     protected function getUploadDir()

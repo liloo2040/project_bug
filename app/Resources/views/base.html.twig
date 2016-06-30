@@ -14,7 +14,7 @@
     <body>
         <nav>
             <div class="nav-wrapper">
-                <a href="{{ path('homepage') }}" class="brand-logo nav_bar_logo"><img src="{{ asset('bundles/foot/images/euro-2016.jpg') }}"/></a>
+                <a href="{{ path('footballplayer_homepage') }}" class="brand-logo nav_bar_logo"><img src="{{ asset('bundles/foot/images/euro-2016.jpg') }}"/></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{ path('footballplayer_index') }}">Les footballeurs</a></li>
                     <li><a href="{{ path('team_index') }}">Les équipes</a></li>
@@ -22,11 +22,12 @@
                 </ul>
             </div>
         </nav>
-        {% block body %}{% endblock %}
 
-        <script src="{{ asset('bundles/foot/js/jquery-3.0.0.min.js') }}"></script>
-        <script src="{{ asset('bundles/foot/js/materialize.js') }}"></script>
-        <script src="{{ asset('bundles/foot/js/main.js') }}"></script>
+
+
+        <script src="{{ 'bundles/foot/js/jquery-3.0.0.min.js' }}"></script>
+        <script src="{{ 'bundles/foot/js/materialize.js' }}"></script>
+        <script src="{{ 'bundles/foot/js/main.js' }}"></script>
         {% block javascripts %}{% endblock %}
 
         <footer class="page-footer">
