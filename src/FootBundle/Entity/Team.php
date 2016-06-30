@@ -10,6 +10,72 @@ use Doctrine\ORM\Mapping as ORM;
 class Team
 {
 
+    public function __toString() {
+        return $this->name;
+    }
+    
+    public $file;
+
+    protected function getUploadDir()
+    {
+        return 'uploads/photos_team';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->photo ? null : $this->getUploadDir().'/'.$this->photo;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->photo ? null : $this->getUploadRootDir().'/'.$this->photo;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // do whatever you want to generate a unique name
+            $this->photo = uniqid().'.'.$this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->file->move($this->getUploadRootDir(), $this->photo);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+    
+        // Generated Code
+ 
     /**
      * @var integer
      */
@@ -26,10 +92,22 @@ class Team
     private $city;
 
     /**
-     * @var \FootBundle\Entity\FootballPlayer
+     * @var string
+     */
+    private $photo;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
      */
     private $footballplayer;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->footballplayer = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -88,22 +166,55 @@ class Team
     }
 
     /**
-     * Set footballplayer
+     * Set photo
      *
-     * @param \FootBundle\Entity\FootballPlayer $footballplayer
+     * @param string $photo
      * @return Team
      */
-    public function setFootballplayer(\FootBundle\Entity\FootballPlayer $footballplayer = null)
+    public function setPhoto($photo)
     {
-        $this->footballplayer = $footballplayer;
+        $this->photo = $photo;
 
         return $this;
     }
 
     /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Add footballplayer
+     *
+     * @param \FootBundle\Entity\FootballPlayer $footballplayer
+     * @return Team
+     */
+    public function addFootballplayer(\FootBundle\Entity\FootballPlayer $footballplayer)
+    {
+        $this->footballplayer[] = $footballplayer;
+
+        return $this;
+    }
+
+    /**
+     * Remove footballplayer
+     *
+     * @param \FootBundle\Entity\FootballPlayer $footballplayer
+     */
+    public function removeFootballplayer(\FootBundle\Entity\FootballPlayer $footballplayer)
+    {
+        $this->footballplayer->removeElement($footballplayer);
+    }
+
+    /**
      * Get footballplayer
      *
-     * @return \FootBundle\Entity\FootballPlayer 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getFootballplayer()
     {

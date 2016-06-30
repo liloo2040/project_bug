@@ -24,7 +24,7 @@ class TeamController extends Controller
 
         $teams = $em->getRepository('FootBundle:Team')->findAll();
 
-        return $this->render('team/index.html.twig', array(
+        return $this->render('FootBundle:team:index.html.twig', array(
             'teams' => $teams,
         ));
     }
@@ -44,29 +44,15 @@ class TeamController extends Controller
             $em->persist($team);
             $em->flush();
 
-            return $this->redirectToRoute('team_show', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_index');
         }
 
-        return $this->render('team/new.html.twig', array(
+        return $this->render('FootBundle:team:new.html.twig', array(
             'team' => $team,
             'form' => $form->createView(),
         ));
     }
-
-    /**
-     * Finds and displays a Team entity.
-     *
-     */
-    public function showAction(Team $team)
-    {
-        $deleteForm = $this->createDeleteForm($team);
-
-        return $this->render('team/show.html.twig', array(
-            'team' => $team,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
+    
     /**
      * Displays a form to edit an existing Team entity.
      *
@@ -78,14 +64,15 @@ class TeamController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $team->preUpload();
             $em = $this->getDoctrine()->getManager();
             $em->persist($team);
             $em->flush();
 
-            return $this->redirectToRoute('team_edit', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_index');
         }
 
-        return $this->render('team/edit.html.twig', array(
+        return $this->render('@Foot/team/edit.html.twig', array(
             'team' => $team,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

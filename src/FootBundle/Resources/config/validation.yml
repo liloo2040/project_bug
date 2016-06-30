@@ -1,0 +1,5 @@
+# src/FootBundle/Resources/config/validation.yml
+FootBundle\Entity\FootballPlayer:
+    properties:
+        file:
+            - Image: ~

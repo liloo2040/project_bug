@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row foot_card">
+        <div class="col s4">
+            <h3 class="card-title">Les footballeurs</h3>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{ asset('bundles/foot/images/footballer.jpg') }}">
+                        </div>
+                        <div class="card-content">
+                            <p>Ajoutez vos joueurs afin de créer vos équipes</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ path('footballplayer_index') }}">C'est parti</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <h3 class="card-title">Les postes</h3>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{ asset('bundles/foot/images/poste.jpg') }}">
+                        </div>
+                        <div class="card-content">
+                            <p>Une bonne tactique, c'est la base de la victoire, définissez vos postes afin de créer la meilleur organisation</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ path('post_index') }}">Avant, droite, gauche, et but !!!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <h3 class="card-title">Les équipes</h3>
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{ asset('bundles/foot/images/team.jpg') }}">
+                        </div>
+                        <div class="card-content">
+                            <p>Créez vos équipes</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ path('team_index') }}">L'union fait la force. GO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

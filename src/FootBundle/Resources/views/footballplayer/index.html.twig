@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des Footballeurs</h1>
+    <p><p class="nb_creation">Nous avons actuellement {{ footballPlayers|length }} {% if footballPlayers|length == 1 %} footballeur de créé.{% else %} footballeurs de créés.{% endif %}</p></p>
+
+    <div class="row">
+    {% for footballPlayer in footballPlayers %}
+
+        <div class="col m3 s4">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card large">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{ asset('uploads/photos_joueur/') }}{{ footballPlayer.photo }}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{ footballPlayer.name }} {{ footballPlayer.prenom }}<i class="flip_card material-icons right">En savoir plus</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="title_card card-title grey-text text-darken-4">{{ footballPlayer.name }} {{ footballPlayer.prenom }}</span>
+                            <h4>Taille: </h4><p>{{ footballPlayer.size }}</p>
+                            <h4>Age: </h4><p>{{ footballPlayer.age }} ans</p>
+                            <h4>Poste: </h4><p>{{ footballPlayer.post }}</p>
+                            <h4>Equipe: </h4><p>{{ footballPlayer.team.values[0].name }}</p>
+                            <p><a class="card_modify" href="{{ path('footballplayer_edit', { 'id': footballPlayer.id }) }}">Modifier</a></p>
+                            <span><i class="flip_card card-title grey-text text-darken-4 material-icons right">close</i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="form_bouton">
+        <a class="waves-effect waves-light btn" href="{{ path('footballplayer_new') }}">Ajouter un nouveau Footballer</a>
+    </div>
+
+
+{% endblock %}

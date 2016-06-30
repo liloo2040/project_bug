@@ -1,0 +1,67 @@
+/* General */
+h1{
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+h2{
+    color: red;
+}
+h4{
+    font-size: 1.28rem;
+    margin-bottom: 7px;
+}
+footer{
+    background-color: #20567C !important;
+}
+.nb_creation{
+    text-align: center;
+}
+/* NAV BAR */
+
+.nav_bar_logo{
+    height: 100%;
+}
+.nav_bar_logo img{
+    height:100%;
+}
+nav{
+    background-color: #20567C;
+}
+
+/* Page accueil */
+
+.foot_card{
+    margin: 0 5% 5% 5%;
+}
+
+/* Formulaire */
+
+.form_bouton{
+    text-align: center;
+    margin-top: 30px;
+}
+.form_bouton button, .form_bouton a{
+    margin-top: 40px;
+}
+
+/* card */
+.title_card{
+    text-align: center;
+    margin-bottom: 16px;
+}
+.flip_card{
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+}
+.card_modify{
+    position: absolute;
+    bottom: 5px;
+    left: 12px;
+}
+.card-title{
+    text-align: center;
+    margin-bottom: 35px;
+}

@@ -23,9 +23,11 @@ class FootballPlayerController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $footballPlayers = $em->getRepository('FootBundle:FootballPlayer')->findAll();
+        $post = $em->getRepository('FootBundle:Post')->findAll();
 
-        return $this->render('footballplayer/index.html.twig', array(
+        return $this->render('FootBundle:footballplayer:index.html.twig', array(
             'footballPlayers' => $footballPlayers,
+            'post' => $post,
         ));
     }
 
@@ -44,26 +46,12 @@ class FootballPlayerController extends Controller
             $em->persist($footballPlayer);
             $em->flush();
 
-            return $this->redirectToRoute('footballplayer_show', array('id' => $footballPlayer->getId()));
+            return $this->redirectToRoute('footballplayer_index');
         }
 
-        return $this->render('footballplayer/new.html.twig', array(
+        return $this->render('FootBundle:footballplayer:new.html.twig', array(
             'footballPlayer' => $footballPlayer,
             'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a FootballPlayer entity.
-     *
-     */
-    public function showAction(FootballPlayer $footballPlayer)
-    {
-        $deleteForm = $this->createDeleteForm($footballPlayer);
-
-        return $this->render('footballplayer/show.html.twig', array(
-            'footballPlayer' => $footballPlayer,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -79,13 +67,14 @@ class FootballPlayerController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $footballPlayer->preUpload();
             $em->persist($footballPlayer);
             $em->flush();
 
-            return $this->redirectToRoute('footballplayer_edit', array('id' => $footballPlayer->getId()));
+            return $this->redirectToRoute('footballplayer_index');
         }
 
-        return $this->render('footballplayer/edit.html.twig', array(
+        return $this->render('FootBundle:footballplayer:edit.html.twig', array(
             'footballPlayer' => $footballPlayer,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

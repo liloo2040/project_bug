@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Team creation</h1>
+
+    <div class="row">
+        <div class="col s6 offset-s3">
+            {{ form_start(form, { 'attr': {'class': 'form_create col s12'} }) }}
+
+            <div class="input-field col s12">
+                <div class="row">
+                    {{ form_label(form.name) }}
+                    {{ form_errors(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <div class="row">
+                    {{ form_label(form.city) }}
+                    {{ form_errors(form.city) }}
+                    {{ form_widget(form.city) }}
+                </div>
+            </div>
+            <div class="input-field col s12">
+                {{ form_errors(form.footballplayer) }}
+                {{ form_widget(form.footballplayer) }}
+                {{ form_label(form.footballplayer) }}
+            </div>
+            <div class="col s12 file-field input-field">
+                <div class="btn">
+                    <span>PHOTO</span>
+                    {{ form_widget(form.file) }}
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Ajouter une photo">
+                </div>
+            </div>
+            <div class="form_bouton">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Créer l'équipe
+                    <i class="material-icons right"></i>
+                </button>
+                <a class="waves-effect waves-light btn" href="{{ path('footballplayer_index') }}">Retour à la liste des équipes</a>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

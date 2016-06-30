@@ -12,15 +12,29 @@ FootBundle\Entity\FootballPlayer:
         name:
             type: string
             length: 255
+        prenom:
+            type: string
+            length: 255
+            nullable: true
         size:
             type: string
             length: 255
         age:
             type: integer
+        photo:
+            type: string
+            length: 255
     manyToOne:
         post:
             targetEntity: FootBundle\Entity\Post
-            joinColumn:
-                name: post_id
-                referencedColumnName: id
-    lifecycleCallbacks: {  }
+    manyToMany:
+        team:
+            targetEntity: FootBundle\Entity\Team
+            mappedBy: footballplayer
+
+    lifecycleCallbacks:
+        prePersist: [ preUpload ]
+        preUpdate: [ preUpload ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]

@@ -3,11 +3,6 @@ footballplayer_index:
     defaults: { _controller: "FootBundle:FootballPlayer:index" }
     methods:  GET
 
-footballplayer_show:
-    path:     /{id}/show
-    defaults: { _controller: "FootBundle:FootballPlayer:show" }
-    methods:  GET
-
 footballplayer_new:
     path:     /new
     defaults: { _controller: "FootBundle:FootballPlayer:new" }

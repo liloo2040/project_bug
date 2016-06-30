@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Poste edit</h1>
+
+    <div class="row">
+        <div class="col s6 offset-s3">
+            {{ form_start(edit_form, { 'attr': {'class': 'form_create col s12'} }) }}
+
+            <div class="input-field col s12">
+                <div class="row">
+                    {{ form_label(edit_form.position) }}
+                    {{ form_errors(edit_form.position) }}
+                    {{ form_widget(edit_form.position) }}
+                </div>
+            </div>
+            <div class="col s12 file-field input-field">
+                <div class="btn">
+                    <span>PHOTO</span>
+                    {{ form_widget(edit_form.file) }}
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Ajouter une photo">
+                </div>
+            </div>
+            <div class="form_bouton">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Modifier le post
+                    <i class="material-icons right"></i>
+                </button>
+                <a class="waves-effect waves-light btn" href="{{ path('post_index') }}">Retour à la liste des posts</a>
+
+            </div>
+
+            {{ form_end(edit_form) }}
+
+            <div class="form_bouton">
+                {{ form_start(delete_form) }}
+                <button class="btn waves-effect waves-light" type="submit" name="action">Supprimer le post</button>
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

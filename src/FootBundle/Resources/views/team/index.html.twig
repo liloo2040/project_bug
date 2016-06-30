@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des équipes</h1>
+    <p class="nb_creation">Nous avons actuellement {{ teams|length }} {% if teams|length == 1 %} équipe de créé.{% else %} équipes de créés.{% endif %}</p>
+
+    <div class="row">
+        {% for team in teams %}
+            {% if teams|length == 1 %}
+                <div class="col m4 offset-m4">
+            {% else %}
+                <div class="col m4">
+            {% endif %}
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="{{ asset('uploads/photos_team/') }}{{ team.photo }}">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">{{ team.name }}<i class="flip_card material-icons right">En savoir plus</i></span>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="title_card card-title grey-text text-darken-4">{{ team.name }}</span>
+                                    <h4>City: </h4><p>{{ team.city }}</p>
+                                    <h4>Membres de l'équipe: </h4>
+                                    <ul>
+                                        {% for team_player in team.footballplayer.values %}
+                                            <div class="col s6">
+                                                <li>{{ team_player.name }} {{ team_player.prenom }}</li>
+                                            </div>
+
+                                        {% endfor %}
+                                    </ul>
+                                    <p><a class="card_modify" href="{{ path('team_edit', { 'id': team.id }) }}">Modifier</a></p>
+                                    <span><i class="flip_card card-title grey-text text-darken-4 material-icons right">close</i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+
+    <div class="form_bouton">
+        <a class="waves-effect waves-light btn" href="{{ path('team_new') }}">Créer une nouvelle équipe</a>
+    </div>
+
+{% endblock %}

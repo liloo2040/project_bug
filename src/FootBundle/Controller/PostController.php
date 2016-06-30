@@ -24,7 +24,7 @@ class PostController extends Controller
 
         $posts = $em->getRepository('FootBundle:Post')->findAll();
 
-        return $this->render('post/index.html.twig', array(
+        return $this->render('FootBundle:post:index.html.twig', array(
             'posts' => $posts,
         ));
     }
@@ -44,29 +44,15 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_index');
         }
 
-        return $this->render('post/new.html.twig', array(
+        return $this->render('FootBundle:post:new.html.twig', array(
             'post' => $post,
             'form' => $form->createView(),
         ));
     }
-
-    /**
-     * Finds and displays a Post entity.
-     *
-     */
-    public function showAction(Post $post)
-    {
-        $deleteForm = $this->createDeleteForm($post);
-
-        return $this->render('post/show.html.twig', array(
-            'post' => $post,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
+    
     /**
      * Displays a form to edit an existing Post entity.
      *
@@ -79,13 +65,14 @@ class PostController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $post->preUpload();
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_index');
         }
 
-        return $this->render('post/edit.html.twig', array(
+        return $this->render('FootBundle:post:edit.html.twig', array(
             'post' => $post,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

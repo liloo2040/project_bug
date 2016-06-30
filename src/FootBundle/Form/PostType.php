@@ -16,6 +16,7 @@ class PostType extends AbstractType
     {
         $builder
             ->add('position')
+            ->add('file', 'file', array('required' => false))
         ;
     }
     

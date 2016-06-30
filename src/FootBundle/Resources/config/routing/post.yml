@@ -3,11 +3,6 @@ post_index:
     defaults: { _controller: "FootBundle:Post:index" }
     methods:  GET
 
-post_show:
-    path:     /{id}/show
-    defaults: { _controller: "FootBundle:Post:show" }
-    methods:  GET
-
 post_new:
     path:     /new
     defaults: { _controller: "FootBundle:Post:new" }

@@ -9,7 +9,3 @@ foot_footballplayer:
 foot_team:
     resource: "@FootBundle/Resources/config/routing/team.yml"
     prefix:   /team
-
-foot_homepage:
-    path:     /
-    defaults: { _controller: FootBundle:Default:index }

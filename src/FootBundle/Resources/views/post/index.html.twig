@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Post list</h1>
+    <p><p class="nb_creation">Nous avons actuellement {{ posts|length }} {% if posts|length == 1 %} post de créé.{% else %} posts de créés.{% endif %}</p></p>
+
+    <div class="row">
+        {% for post in posts %}
+
+            <div class="col m3 s4">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{ asset('uploads/photos_poste/') }}{{ post.photo }}">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title grey-text text-darken-4">{{ post.position }}</span>
+                                <p><a class="card_modify" href="{{ path('post_edit', { 'id': post.id }) }}">Modifier</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="form_bouton">
+        <a class="waves-effect waves-light btn" href="{{ path('post_new') }}">Ajouter un nouveau post</a>
+    </div>
+
+{% endblock %}
