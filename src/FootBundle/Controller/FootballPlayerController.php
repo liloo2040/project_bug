@@ -2,6 +2,7 @@
 
 namespace FootBundle\Controller;
 
+use FootBundle\FootBundle;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -14,6 +15,17 @@ use FootBundle\Form\FootballPlayerType;
  */
 class FootballPlayerController extends Controller
 {
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $footballPlayers = $em->getRepository('FootBundle:FootballPlayer')->findAll();
+
+        return $this->render('FootBundle:footballplayer:index.html.twig', array(
+            'footballPlayers' => $footballPlayers,
+        ));
+    }
+
     /**
      * Creates a new FootballPlayer entity.
      *
@@ -32,7 +44,7 @@ class FootballPlayerController extends Controller
             return $this->redirectToRoute('footballplayer_index');
         }
 
-        return $this->render('default/new.html.twig', array(
+        return $this->render('FootBundle:footballplayer:new.html.twig', array(
             'footballPlayer' => $footballPlayer,
             'form' => $form->createView(),
         ));

@@ -77,4 +77,123 @@ class FootballPlayer
 
     // Generated Code
     
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var \FootBundle\Entity\Post
+     */
+    private $post;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $team;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->team = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return FootballPlayer
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set post
+     *
+     * @param \FootBundle\Entity\Post $post
+     *
+     * @return FootballPlayer
+     */
+    public function setPost(\FootBundle\Entity\Post $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \FootBundle\Entity\Post
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * Add team
+     *
+     * @param \FootBundle\Entity\Team $team
+     *
+     * @return FootballPlayer
+     */
+    public function addTeam(\FootBundle\Entity\Team $team)
+    {
+        $this->team[] = $team;
+
+        return $this;
+    }
+
+    /**
+     * Remove team
+     *
+     * @param \FootBundle\Entity\Team $team
+     */
+    public function removeTeam(\FootBundle\Entity\Team $team)
+    {
+        $this->team->removeElement($team);
+    }
+
+    /**
+     * Get team
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
 }

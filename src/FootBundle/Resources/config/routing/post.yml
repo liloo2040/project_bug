@@ -1,3 +1,8 @@
+post_index:
+    path:     /
+    defaults: {_controller: "FootBundle:Post:index"}
+    methods: GET
+
 post_new:
     path:     /new
     defaults: { _controller: "FootBundle:Post:new" }

@@ -5,3 +5,13 @@ foot_post:
 foot_team:
     resource: "@FootBundle/Resources/config/routing/team.yml"
     prefix:   /team
+
+foot_player:
+    resource: "@FootBundle/Resources/config/routing/footballplayer.yml"
+    prefix: footballplayer_homepage
+
+foot_players:
+    resource: "@FootBundle/Resources/config/routing/footballplayer.yml"
+    prefix: footballplayer_index
+
+

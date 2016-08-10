@@ -5,3 +5,29 @@ app:
 homepage:
     path:     /
     defaults: { _controller: FootBundle:Default:index }
+
+footballplayer_index:
+    path: /footballplayer
+    defaults: {_controller: FootBundle:FootballPlayer:index }
+
+team_index:
+    path: /team
+    defaults: {_controller: FootBundle:Team:index }
+
+post_index:
+    path: /post
+    defaults: {_controller: FootBundle:Post:index }
+
+football:
+    resource: "@FootBundle/Resources/config/routing/footballplayer.yml"
+    prefix: football
+
+team:
+    resource: "@FootBundle/Resources/config/routing/team.yml"
+    prefix: team
+
+post:
+    resource: "@FootBundle/Resources/config/routing/post.yml"
+    prefix: post
+
+

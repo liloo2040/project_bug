@@ -4,7 +4,6 @@ namespace FootBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * FootballPlayer
@@ -77,8 +76,7 @@ class FootballPlayer
     }
 
     // Generated Code
-
-
+    
     /**
      * @var integer
      */
@@ -88,26 +86,6 @@ class FootballPlayer
      * @var string
      */
     private $name;
-
-    /**
-     * @var string
-     */
-    private $prenom;
-
-    /**
-     * @var string
-     */
-    private $size;
-
-    /**
-     * @var integer
-     */
-    private $age;
-
-    /**
-     * @var string
-     */
-    private $photo;
 
     /**
      * @var \FootBundle\Entity\Post
@@ -130,7 +108,7 @@ class FootballPlayer
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -141,6 +119,7 @@ class FootballPlayer
      * Set name
      *
      * @param string $name
+     *
      * @return FootballPlayer
      */
     public function setName($name)
@@ -153,7 +132,7 @@ class FootballPlayer
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -161,101 +140,10 @@ class FootballPlayer
     }
 
     /**
-     * Set prenom
-     *
-     * @param string $prenom
-     * @return FootballPlayer
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    /**
-     * Get prenom
-     *
-     * @return string 
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * Set size
-     *
-     * @param string $size
-     * @return FootballPlayer
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
-
-        return $this;
-    }
-
-    /**
-     * Get size
-     *
-     * @return string 
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
-
-    /**
-     * Set age
-     *
-     * @param integer $age
-     * @return FootballPlayer
-     */
-    public function setAge($age)
-    {
-        $this->age = $age;
-
-        return $this;
-    }
-
-    /**
-     * Get age
-     *
-     * @return integer 
-     */
-    public function getAge()
-    {
-        return $this->age;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     * @return FootballPlayer
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string 
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
      * Set post
      *
      * @param \FootBundle\Entity\Post $post
+     *
      * @return FootballPlayer
      */
     public function setPost(\FootBundle\Entity\Post $post = null)
@@ -268,7 +156,7 @@ class FootballPlayer
     /**
      * Get post
      *
-     * @return \FootBundle\Entity\Post 
+     * @return \FootBundle\Entity\Post
      */
     public function getPost()
     {
@@ -279,6 +167,7 @@ class FootballPlayer
      * Add team
      *
      * @param \FootBundle\Entity\Team $team
+     *
      * @return FootballPlayer
      */
     public function addTeam(\FootBundle\Entity\Team $team)
@@ -301,7 +190,7 @@ class FootballPlayer
     /**
      * Get team
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTeam()
     {

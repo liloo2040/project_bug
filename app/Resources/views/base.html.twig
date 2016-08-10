@@ -3,18 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-
+        {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bundles/foot/css/materialize.css') }}" type="text/css">
         <link rel="stylesheet" href="{{ asset('bundles/foot/css/style.css') }}" type="text/css">
 
-        {% block stylesheets %}{% endblock %}
+        {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+
         <nav>
             <div class="nav-wrapper">
-                <a href="{{ path('footballplayer_homepage') }}" class="brand-logo nav_bar_logo"><img src="{{ asset('bundles/foot/images/euro-2016.jpg') }}"/></a>
+                <a href="{{ path('homepage') }}" class="brand-logo nav_bar_logo"><img src="{{ asset('bundles/foot/images/euro-2016.jpg') }}"/></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{ path('footballplayer_index') }}">Les footballeurs</a></li>
                     <li><a href="{{ path('team_index') }}">Les équipes</a></li>
@@ -22,13 +23,16 @@
                 </ul>
             </div>
         </nav>
+        {% block body %}
 
 
+        {% endblock %}
 
-        <script src="{{ 'bundles/foot/js/jquery-3.0.0.min.js' }}"></script>
-        <script src="{{ 'bundles/foot/js/materialize.js' }}"></script>
-        <script src="{{ 'bundles/foot/js/main.js' }}"></script>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ 'bundles/foot/js/jquery-3.0.0.min.js' }}"></script>
+            <script src="{{ 'bundles/foot/js/materialize.js' }}"></script>
+            <script src="{{ 'bundles/foot/js/main.js' }}"></script>
+        {% endblock %}
 
         <footer class="page-footer">
             <div class="footer-copyright">

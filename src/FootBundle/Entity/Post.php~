@@ -9,11 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Post
 {
-
-    public function __toString() {
-        return $this->position;
-    }
-
     public $file;
 
     protected function getUploadDir()
@@ -119,5 +114,33 @@ class Post
     public function getPosition()
     {
         return $this->position;
+    }
+    /**
+     * @var string
+     */
+    private $photo;
+
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return Post
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 }
